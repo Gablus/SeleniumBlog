@@ -1,12 +1,14 @@
 import unittest
 import datetime
-from pages.signup_page import SignupPage
+import pagesObj
 from pages.message import Message
 from selenium import webdriver
 
 # TC N#: Sing up for blog
 class SingUpTest(unittest.TestCase):
-    
+
+    timestamp = datetime.datetime.timestamp(datetime.datetime.now())
+
     def setUp(self):
         self.browser = webdriver.Firefox()
         # Go to signup form
@@ -20,7 +22,7 @@ class SingUpTest(unittest.TestCase):
         # Assert
         assert_text = f'Welcome to the alpha blog nameT{self.timestamp}'
         # Fill out and submit form
-        signup = SignupPage(self.browser)
+        signup = pagesObj.SignupPage(self.browser)
         signup.enter_username(self.username)
         signup.enter_email(self.email)
         signup.enter_password(self.password )
